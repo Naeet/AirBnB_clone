@@ -34,9 +34,12 @@ class BaseModel:
 
     def to_dict(self):
         """
-        returns a dictionary containing all keys/values of __dict__ of the instance
-        by using self.__dict__, only instance attributes set will be returned
-        a key __class__ must be added to this dictionary with the class name of the object
+        returns a dictionary containing 
+                      all keys/values of __dict__ of the instance
+        by using self.__dict__, 
+        only instance attributes set will be returned
+        a key __class__ must be added to t
+        his dictionary with the class name of the object
         created_at and updated_at must be converted to string object in ISO format
         """
 
