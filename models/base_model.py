@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 import models
 
+
 class BaseModel:
     def __init__(self, *args, **kwargs):
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
@@ -34,13 +35,9 @@ class BaseModel:
 
     def to_dict(self):
         """
-        returns a dictionary containing 
+        returns a dictionary containin``
                       all keys/values of __dict__ of the instance
-        by using self.__dict__, 
-        only instance attributes set will be returned
-        a key __class__ must be added to t
-        his dictionary with the class name of the object
-        created_at and updated_at must be converted to string object in ISO format
+        by using self.__dict__,
         """
 
         inst_dict = self.__dict__.copy()
@@ -70,4 +67,6 @@ if __name__ == "__main__":
     print(my_model_json)
     print("JSON of my_model:")
     for key in my_model_json.keys():
-        print("\t{}: ({}) - {}".format(key, type(my_model_json[key]), my_model_json[key]))
+        print("\t{}: ({}) - {}".format(key,
+                                       type(my_model_json[key]),
+                                       my_model_json[key]))

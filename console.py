@@ -51,8 +51,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
             print(new_instance.id)
 
-
-    def do_EOF(self,arg):
+    def do_EOF(self, arg):
         """
         end of file
         """
@@ -101,8 +100,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-
-
     def do_all(self, arg):
         """
         print str rep of all instances
@@ -121,8 +118,6 @@ class HBNBCommand(cmd.Cmd):
             for key, value in objects.items():
                 if key.split('.')[0] == commands[0]:
                     print(str(value))
-
-
 
     def do_count(self, arg):
         """
@@ -247,7 +242,6 @@ class HBNBCommand(cmd.Cmd):
                     return call("{} {} {}".format(cls_nm, obj_id, arg_dict))
                 except Exception:
                     pass
-
 
     def split_curly_braces(e_arg):
         """
