@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-tests
+Module for BaseModel unittest
 """
 import os
 import unittest
@@ -11,6 +11,28 @@ class TestBasemodel(unittest.TestCase):
     """
     Unittest for BaseModel
     """
+
+    def setUp(self):
+        """
+        Setup for temporary file path
+        """
+        try:
+            os.rename("file.json", "tmp.json")
+        except FileNotFoundError:
+            pass
+
+    def tearDown(self):
+        """
+        Tear down for temporary file path
+        """
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
+        try:
+            os.rename("tmp.json", "file.json")
+        except FileNotFoundError:
+            pass
 
     def test_init(self):
         """
@@ -24,7 +46,7 @@ class TestBasemodel(unittest.TestCase):
 
     def test_save(self):
         """
-        test for save method
+        Test for save method
         """
         my_model = BaseModel()
 
@@ -32,11 +54,11 @@ class TestBasemodel(unittest.TestCase):
 
         current_updated_at = my_model.save()
 
-        self.assertNotEqual(initial_update_at, current_updated_at)
+        self.assertNotEqual(initial_updated_at, current_updated_at)
 
     def test_to_dict(self):
         """
-        test for to_dict method
+        Test for to_dict method
         """
         my_model = BaseModel()
 
@@ -46,12 +68,14 @@ class TestBasemodel(unittest.TestCase):
 
         self.assertEqual(my_model_dict["__class__"], 'BaseModel')
         self.assertEqual(my_model_dict['id'], my_model.id)
-        self.assertEqual(my_model_dict['created_at'], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict["updated_at"], my_model.updated_at.isoformat())
+        self.assertEqual(my_model_dict['created_at'],
+                         my_model.created_at.isoformat())
+        self.assertEqual(my_model_dict["updated_at"],
+                         my_model.created_at.isoformat())
 
     def test_str(self):
         """
-        test for str representation
+        Test for string representation
         """
         my_model = BaseModel()
 
@@ -59,8 +83,8 @@ class TestBasemodel(unittest.TestCase):
 
         self.assertIn(my_model.id, str(my_model))
 
-        self.asserIn(str(my_model.__dict__), str(my_model))
+        self.assertIn(str(my_model.__dict__), str(my_model))
 
-if __name__ == "__main___":
+
+if __name__ == "__main__":
     unittest.main()
-
