@@ -10,7 +10,6 @@ from models.state import State
 from models.city import City
 
 
-
 class FileStorage:
     """
     whole class
@@ -48,7 +47,7 @@ class FileStorage:
 
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
             json.dump(obj_dict, file)
-    
+
     def reload(self):
         """
         to deserialize
@@ -69,5 +68,3 @@ class FileStorage:
 
                 except Exception:
                     pass
-
-
