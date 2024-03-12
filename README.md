@@ -1,1 +1,1 @@
-this is AirBnB_Clone first project 
+this is the whole AIRBNB clone project
