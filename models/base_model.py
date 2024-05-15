@@ -1,0 +1,21 @@
+import uuid
+from datetime import datetime
+
+class BaseModel:
+    def __init__(self):
+        self.id = str(uuid.uuid4())  # Generate unique id
+        self.created_at = datetime.now()  # Assign current datetime
+        self.updated_at = datetime.now()  # Assign current datetime
+
+    def __str__(self):
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
+
+    def save(self):
+        self.updated_at = datetime.now()  # Update updated_at attribute with current datetime
+
+    def to_dict(self):
+        obj_dict = self.__dict__.copy()  # Copy instance attributes
+        obj_dict['__class__'] = type(self).__name__  # Add class name
+        obj_dict['created_at'] = self.created_at.isoformat()  # Convert created_at to ISO format
+        obj_dict['updated_at'] = self.updated_at.isoformat()  # Convert updated_at to ISO format
+        return obj_dict
