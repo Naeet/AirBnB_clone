@@ -1,10 +1,21 @@
+#!/usr/bin/python3
+"""Module base_model
+
+This Module contains a definition for Amenity Class
+"""
+
 from models.base_model import BaseModel
 
+
 class Review(BaseModel):
-    """Review class"""
-    def __init__(self, *args, **kwargs):
-        """Initialize Review"""
-        super().__init__(*args, **kwargs)
-        self.place_id = ""
-        self.user_id = ""
-        self.text = ""
+    """A class that represents a review
+
+    Attributes:
+        place_id (str): The Place id.
+        user_id (str): The User id.
+        text (str): The text of the review.
+    """
+
+    place_id = ""
+    user_id = ""
+    text = ""
